@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KermesseApp", "KermesseApp\KermesseApp.csproj", "{C25813DC-C757-4F33-B91B-00903E7E097D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C25813DC-C757-4F33-B91B-00903E7E097D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C25813DC-C757-4F33-B91B-00903E7E097D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C25813DC-C757-4F33-B91B-00903E7E097D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C25813DC-C757-4F33-B91B-00903E7E097D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04C11380-33B9-4F53-AF1A-8264425CB637}
+	EndGlobalSection
+EndGlobal

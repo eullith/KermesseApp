@@ -1,0 +1,38 @@
+﻿@model KermesseApp.Models.tbl_cat_producto
+
+@{
+    ViewBag.Title = "VwGuardarCatProd";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("VwGuardarCatProd", "Tbl_cat_producto", FormMethod.Post))
+{
+    <div class="container" style="padding-top: 1rem;">
+        <div class="form-horizontal">
+            <h3>Control de Categorías de Productos</h3>
+            <hr>
+            <div class="form-group">
+                <label>Nombre de la Catergoría</label>
+                @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Descripción de la Catergoría</label>
+                @Html.TextAreaFor(x => x.descripcion, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Regresar", "tbl_catProducto")
+</div>
