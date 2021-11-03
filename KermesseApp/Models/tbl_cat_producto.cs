@@ -30,7 +30,7 @@ namespace KermesseApp.Models
         [Required(ErrorMessage = "Escriba la descripción de la categoría")]
         [StringLength(100, ErrorMessage = "El valor máximo de caracteres permitida es de 100")]
         public string descripcion { get; set; }
-        
+
         public int estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

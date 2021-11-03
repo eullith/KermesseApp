@@ -10,19 +10,19 @@
     @Html.ActionLink("Crear Nuevo", "VwGuardarCatProd")
 </p>
 
-@*@using (Html.BeginForm("FiltrarListaCatProd", "Tbl_cat_producto", FormMethod.Post))
-{ 
+@using (Html.BeginForm("FiltrarCatProd", "Tbl_cat_producto", FormMethod.Post))
+{
     <div class="row">
-        <div class="form-group col-md-2">
-            <label for="cadena" class="form-label col-md-2">Búsqueda</label>
-            @Html.TextBox("cadena", null, new {@class = "form-control col-md-4", @placeholder})
+        <div class="form-group col-xs-12">
+            @Html.TextBox("cadena", null, new { @class = "form-control col-md-4", @placeholder = "Ingrese aquí los datos que desea buscar"})
+            <span class="input-group">
+                <button type="submit" class="btn btn-block btn-success col-md-2">Buscar</button>
+            </span>
         </div>
-
     </div>
-}*@
-
-
-<table class="table">
+}
+ 
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.nombre)
@@ -31,28 +31,29 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>*@
+                @Html.DisplayNameFor(model => model.estado)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>*@
-    <td>
-        @Html.ActionLink("Editar", "EditarCatProd", new { id=item.id_cat_producto }) |
-        @Html.ActionLink("Detalle", "VerCatProd", new { id=item.id_cat_producto }) |
-        @Html.ActionLink("Eliminar", "EliminarCatProd", new { id = item.id_cat_producto }, new { @class = "btn btn-xs btn-danger"})
-    </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>*@
+            <td>
+                @Html.ActionLink("Editar", "EditarCatProd", new { id = item.id_cat_producto }) |
+                @Html.ActionLink("Detalle", "VerCatProd", new { id = item.id_cat_producto }) |
+                @Html.ActionLink("Eliminar", "EliminarCatProd", new { id = item.id_cat_producto }, new { @class = "btn btn-xs btn-danger" })
+            </td>
+        </tr>
 
+    }
 </table>

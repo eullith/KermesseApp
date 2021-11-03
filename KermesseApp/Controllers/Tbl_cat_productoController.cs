@@ -25,17 +25,25 @@ namespace KermesseApp.Controllers
         [HttpPost]
         public ActionResult GuardarCatProd(tbl_cat_producto tcp) //Method that saves new item
         {
-            if(ModelState.IsValid)
-            { 
-            tbl_cat_producto tcProd = new tbl_cat_producto();
-            tcProd.nombre = tcp.nombre;
-            tcProd.descripcion = tcp.descripcion;
-            tcProd.estado = 1;
-            db.tbl_cat_producto.Add(tcProd); //Add new item
-            db.SaveChanges(); //Saves to model registry 
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    tbl_cat_producto tcProd = new tbl_cat_producto();
+                    tcProd.nombre = tcp.nombre;
+                    tcProd.descripcion = tcp.descripcion;
+                    tcProd.estado = 1;
+                    db.tbl_cat_producto.Add(tcProd); //Add new item
+                    db.SaveChanges(); //Saves to model registry 
+                }
+                ModelState.Clear();
+                return RedirectToAction("tbl_catProducto");
             }
-            ModelState.Clear();
-            return View("tbl_catProducto");
+            catch
+            {
+               return RedirectToAction("tbl_catProducto");
+            }
+           
         }
 
         public ActionResult EliminarCatProd(int id)
@@ -86,6 +94,22 @@ namespace KermesseApp.Controllers
                 return View();
             }
 
+        }
+
+        [HttpPost]
+        
+        public ActionResult FiltrarCatProd(String cadena)
+        {
+            if(String.IsNullOrEmpty(cadena))
+            {
+                var list = db.tbl_cat_producto.ToList();
+                return View("VwGuardarCatProd", list);
+            }
+            else
+            {
+                var listaFiltrada = db.tbl_cat_producto.Where(x => x.nombre.Contains(cadena) || x.descripcion.Contains(cadena));
+                return View("VwGuardarCatProd", listaFiltrada);
+            }
         }
     }
 }
