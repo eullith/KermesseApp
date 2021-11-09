@@ -93,7 +93,6 @@ namespace KermesseApp.Controllers
             {
                 return View();
             }
-
         }
 
         [HttpPost]
@@ -103,12 +102,12 @@ namespace KermesseApp.Controllers
             if(String.IsNullOrEmpty(cadena))
             {
                 var list = db.tbl_cat_producto.ToList();
-                return View("VwGuardarCatProd", list);
+                return View("tbl_catProducto", list);
             }
             else
             {
                 var listaFiltrada = db.tbl_cat_producto.Where(x => x.nombre.Contains(cadena) || x.descripcion.Contains(cadena));
-                return View("VwGuardarCatProd", listaFiltrada);
+                return View("tbl_catProducto", listaFiltrada);
             }
         }
     }

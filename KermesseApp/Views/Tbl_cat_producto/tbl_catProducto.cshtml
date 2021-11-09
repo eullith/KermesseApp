@@ -4,56 +4,69 @@
     ViewBag.Title = "tbl_catProducto";
 }
 
-<h2>Categoría del Producto</h2>
-
-<p>
-    @Html.ActionLink("Crear Nuevo", "VwGuardarCatProd")
-</p>
-
 @using (Html.BeginForm("FiltrarCatProd", "Tbl_cat_producto", FormMethod.Post))
 {
-    <div class="row">
-        <div class="form-group col-xs-12">
-            @Html.TextBox("cadena", null, new { @class = "form-control col-md-4", @placeholder = "Ingrese aquí los datos que desea buscar"})
-            <span class="input-group">
-                <button type="submit" class="btn btn-block btn-success col-md-2">Buscar</button>
-            </span>
+    <div class="content-wrapper">
+        <div class="main-panel" style="padding-top:2.5rem;">
+
+            <h2>Categoría del Producto</h2>
+
+            <div class="container">
+                <p>
+                    @Html.ActionLink("Añadir Nueva Categoría de Producto", "VwGuardarCatProd")
+                </p>
+                <div class="input-group" style="padding-bottom:2.5rem;">
+                    @Html.TextBox("cadena", null, new { @class = "form-control col-md-6", @placeholder = "Ingrese aquí los datos que desea buscar" })
+                    <div class="input-group-prepend hover-cursor">
+                        <span class="input-group" style="padding-left: 1rem;">
+                            <button type="submit" class="btn btn-success">
+                                <i data-feather="search"></i>Buscar
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.descripcion)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.estado)
+                            </th>*@
+                        <th>
+                            @Html.Label("Acciones")
+                        </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descripcion)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.estado)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Editar", "EditarCatProd", new { id = item.id_cat_producto }) |
+                            @Html.ActionLink("Detalle", "VerCatProd", new { id = item.id_cat_producto }) |
+                            @Html.ActionLink("Eliminar", "EliminarCatProd", new { id = item.id_cat_producto }, new { @class = "btn btn-xs btn-danger" })
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
         </div>
     </div>
 }
- 
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.estado)
-            </th>*@
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.estado)
-                </td>*@
-            <td>
-                @Html.ActionLink("Editar", "EditarCatProd", new { id = item.id_cat_producto }) |
-                @Html.ActionLink("Detalle", "VerCatProd", new { id = item.id_cat_producto }) |
-                @Html.ActionLink("Eliminar", "EliminarCatProd", new { id = item.id_cat_producto }, new { @class = "btn btn-xs btn-danger" })
-            </td>
-        </tr>
-
-    }
-</table>

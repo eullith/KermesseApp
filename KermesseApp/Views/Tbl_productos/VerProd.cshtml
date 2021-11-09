@@ -1,0 +1,74 @@
+﻿@model KermesseApp.Models.tbl_productos
+
+@{
+    ViewBag.Title = "VerProd";
+}
+
+<h2>Ver Productos</h2>
+
+<div>
+    <h4>Detalle de Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Nombre</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            <label>Descripción</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_presentacion)
+        </dd>
+
+        <dt>
+            <label>Cantidad</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            <label>Precio</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_venta)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>*@
+
+        <dt>
+            <label>Categoría</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_cat_producto.nombre)
+        </dd>
+
+        <dt>
+            <label>Comunidad</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_comunidad.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Editar", "EditarProd", new { id = Model.id_producto }) |*@
+    @Html.ActionLink("Regresar", "Tbl_productos")
+</p>

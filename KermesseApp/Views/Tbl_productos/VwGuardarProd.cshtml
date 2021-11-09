@@ -1,0 +1,58 @@
+﻿@model KermesseApp.Models.tbl_productos
+
+@{
+    ViewBag.Title = "VwGuardarProd";
+}
+
+@using (Html.BeginForm("GuardarProd", "Tbl_productos", FormMethod.Post))
+{
+    <div class="container" style="padding-top: 1rem;">
+        <h4>Control de Productos</h4>
+        <hr>
+        <div class="form-group">
+            <label>Comunidad</label>
+            @Html.DropDownListFor(model => model.id_comunidad, ViewBag.id_comunidad as SelectList, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.id_comunidad, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+            @Html.DropDownListFor(model => model.id_cat_producto, ViewBag.id_cat_producto as SelectList, "Seleccione...", htmlAttributes: new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.id_cat_producto, "", new { @class = "text-danger" })*@
+        </div>
+
+
+        <div class="form-group">
+            <label>Nombre</label>
+            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            @Html.TextAreaFor(x => x.desc_presentacion, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.desc_presentacion, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            <label>Cantidad</label>
+            @Html.TextBoxFor(x => x.cantidad, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.cantidad, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            <label>Precio</label>
+            @Html.TextBoxFor(x => x.precio_venta, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.precio_venta, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="reset" class="btn btn-danger">Cancelar</button>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "tbl_Productos")
+</div>

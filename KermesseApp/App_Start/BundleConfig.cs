@@ -19,12 +19,34 @@ namespace KermesseApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(new Bundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new Bundle("~/Scripts/js").Include(
+                "~/Scripts/data-table.js",
+                "~/Scripts/calendar.js",
+                "~/Scripts/jq.tablesort.js",
+                "~/Scripts/profile-demo.js",
+                "~/Scripts/paginate.js",
+                "~/Scripts/form-validation.js",
+                "~/Scripts/form-repeater.js",
+                "~/Scripts/dashboard.js",
+                "~/Scripts/bootstrap-table.js",
+                "~/Scripts/off-canvas.js",
+                "~/Scripts/jquery.dataTables.js",
+                "~/Scripts/dataTables.select.min.js",
+                "~/Scripts/template.js",
+                "~/Scripts/vendor.bundle.base.js"));
+
+            bundles.Add(new Bundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/style.css",
+                      "~/Content/themify-icons.css",
+                      "~/Content/vendor.bundle.base.css",
+                      "~/Content/feather.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/dataTables.bootstrap4.css"));
+
         }
     }
 }

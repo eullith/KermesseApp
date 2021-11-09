@@ -4,12 +4,10 @@
     ViewBag.Title = "EditarCatProd";
 }
 
-<h2>EditarCatProd</h2>
+<h2>Editar Categoría</h2>
 
 @using (Html.BeginForm("ActualizarCatProd", "Tbl_cat_producto", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    
+{    
     <div class="form-horizontal">
         <h4>tbl_cat_producto</h4>
         <hr />
@@ -19,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
