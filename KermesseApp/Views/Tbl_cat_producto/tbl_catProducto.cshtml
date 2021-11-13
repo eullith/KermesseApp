@@ -6,20 +6,10 @@
 
 @using (Html.BeginForm("FiltrarCatProd", "Tbl_cat_producto", FormMethod.Post))
 {
-    <h2 style="padding-bottom:2.5rem;">Categoría del Producto</h2>
+    <h2 style="padding-bottom:2rem;">Categoría del Producto</h2>
 
     <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
-        <div class="col justify-content-end">
-            <div class="input-group">
-                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-6", @placeholder = "Buscar", @name = "search-outline" })
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">
-                        <i data-feather="search"></i>Buscar
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-auto">
+        <div class="col-md-auto" style="padding-right:12rem;">
             <p>
                 <a href="@Url.Action("VwGuardarCatProd")"
                    class="btn btn-primary">
@@ -29,6 +19,16 @@
                     </span>
                 </a>
             </p>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" })
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">
+                        <i data-feather="search"></i>Buscar
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -63,14 +63,11 @@
                         @Html.DisplayFor(modelItem => item.estado)
                     </td>*@
                 <td>
-                    @Html.ActionLink("Editar", "EditarCatProd", new { id = item.id_cat_producto }) |
-                    @Html.ActionLink("Detalle", "VerCatProd", new { id = item.id_cat_producto }) |
-                    @Html.ActionLink("Eliminar", "EliminarCatProd", new { id = item.id_cat_producto }, new { @class = "btn btn-xs btn-danger" })
-
+                    <a href="@Url.Action("EditarCatProd", new { id = item.id_cat_producto })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                    <a href="@Url.Action("VerCatProd", new { id = item.id_cat_producto })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                    <a href="@Url.Action("EliminarCatProd", new { id = item.id_cat_producto })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
                 </td>
             </tr>
-
         }
-
     </table>
 }

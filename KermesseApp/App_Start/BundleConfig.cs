@@ -33,7 +33,6 @@ namespace KermesseApp
                 "~/Scripts/bootstrap-table.js",
                 "~/Scripts/off-canvas.js",
                 "~/Scripts/jquery.dataTables.js",
-                "~/Scripts/dataTables.select.min.js",
                 "~/Scripts/template.js",
                 "~/Scripts/vendor.bundle.base.js"));
 
@@ -41,11 +40,8 @@ namespace KermesseApp
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/style.css",
-                      "~/Content/themify-icons.css",
                       "~/Content/vendor.bundle.base.css",
-                      "~/Content/feather.css",
-                      "~/Content/font-awesome.css",
-                      "~/Content/dataTables.bootstrap4.css"));
+                      "~/Content/feather.css"));
 
         }
     }

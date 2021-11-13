@@ -6,28 +6,32 @@
 
 @using (Html.BeginForm("FiltrarProd", "Tbl_productos", FormMethod.Post))
 {
-    <h2>Productos</h2>
-    <div class="row">
-        <div class="col-md-6 grid-margin transparent">
-            <div class="input-group" style="padding-bottom:2.5rem;">
-                <p>
-                    @Html.ActionLink("Añadir Nuevo Producto", "VwGuardarProd", new { @class = "btn btn-primary btn-large" }) 
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6 grid-margin transparent">
-            <div class="input-group" style="padding-bottom:2.5rem;">
-                @Html.TextBox("cadena", null, new { @class = "form-control col-md-6", @placeholder = "Ingrese aquí los datos que desea buscar" })
-                <div class="input-group-prepend hover-cursor">
-                    <span class="input-group" style="padding-left: 1rem;">
-                        <button type="submit" class="btn btn-success">
-                            <i data-feather="search"></i>Buscar
-                        </button>
+    <h2 style="padding-bottom: 2rem;">Productos</h2>
+
+    <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
+        <div class="col-md-auto" style="padding-right:12rem;">
+            <p>
+                <a href="@Url.Action("VwGuardarProd")"
+                   class="btn btn-primary">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <span>
+                        <strong>Añadir Nuevo</strong>
                     </span>
+                </a>
+            </p>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" })
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">
+                        <i data-feather="search"></i>Buscar
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <table class="table table-hover">
         <thead>
@@ -44,9 +48,6 @@
                 <th>
                     @Html.Label("Precio")
                 </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.estado)
-                    </th>*@
                 <th>
                     @Html.Label("Categoría")
                 </th>
@@ -84,9 +85,9 @@
                     @Html.DisplayFor(modelItem => item.tbl_comunidad.nombre)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "EditarProd", new { id = item.id_producto }) |
-                    @Html.ActionLink("Detalle", "VerProd", new { id = item.id_producto }) |
-                    @Html.ActionLink("Eliminar", "EliminarProd", new { id = item.id_producto })
+                    <a href="@Url.Action("EditarProd", new { id = item.id_producto })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                    <a href="@Url.Action("VerProd", new { id = item.id_producto })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                    <a href="@Url.Action("EliminarProd", new { id = item.id_producto })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
                 </td>
             </tr>
         }
