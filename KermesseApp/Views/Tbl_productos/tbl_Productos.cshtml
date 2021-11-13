@@ -6,13 +6,16 @@
 
 @using (Html.BeginForm("FiltrarProd", "Tbl_productos", FormMethod.Post))
 {
-    <div class="content-wrapper">
-        <div class="main-panel" style="padding-top:2.5rem;">
-
-            <h2>Productos</h2>
-            <p>
-                @Html.ActionLink("Añadir Nuevo Producto", "VwGuardarProd")
-            </p>
+    <h2>Productos</h2>
+    <div class="row">
+        <div class="col-md-6 grid-margin transparent">
+            <div class="input-group" style="padding-bottom:2.5rem;">
+                <p>
+                    @Html.ActionLink("Añadir Nuevo Producto", "VwGuardarProd", new { @class = "btn btn-primary btn-large" }) 
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin transparent">
             <div class="input-group" style="padding-bottom:2.5rem;">
                 @Html.TextBox("cadena", null, new { @class = "form-control col-md-6", @placeholder = "Ingrese aquí los datos que desea buscar" })
                 <div class="input-group-prepend hover-cursor">
@@ -23,70 +26,70 @@
                     </span>
                 </div>
             </div>
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.Label("Nombre")
-                        </th>
-                        <th>
-                            @Html.Label("Descripción")
-                        </th>
-                        <th>
-                            @Html.Label("Cantidad")
-                        </th>
-                        <th>
-                            @Html.Label("Precio")
-                        </th>
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.estado)
-                            </th>*@
-                        <th>
-                            @Html.Label("Categoría")
-                        </th>
-                        <th>
-                            @Html.Label("Comunidad")
-                        </th>
-                        <th>
-                            @Html.Label("Acciones")
-                        </th>
-                    </tr>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.desc_presentacion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cantidad)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.precio_venta)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.estado)
-                            </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tbl_cat_producto.nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tbl_comunidad.nombre)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Editar", "EditarProd", new { id = item.id_producto }) |
-                            @Html.ActionLink("Detalle", "VerProd", new { id = item.id_producto }) |
-                            @Html.ActionLink("Eliminar", "EliminarProd", new { id = item.id_producto })
-                        </td>
-                    </tr>
-                }
-
-            </table>
         </div>
     </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.Label("Nombre")
+                </th>
+                <th>
+                    @Html.Label("Descripción")
+                </th>
+                <th>
+                    @Html.Label("Cantidad")
+                </th>
+                <th>
+                    @Html.Label("Precio")
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>*@
+                <th>
+                    @Html.Label("Categoría")
+                </th>
+                <th>
+                    @Html.Label("Comunidad")
+                </th>
+                <th>
+                    @Html.Label("Acciones")
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-wrap" style="width: 5rem;">
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td class="text-wrap" style="width: 18rem;">
+                    @Html.DisplayFor(modelItem => item.desc_presentacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio_venta)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_cat_producto.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_comunidad.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "EditarProd", new { id = item.id_producto }) |
+                    @Html.ActionLink("Detalle", "VerProd", new { id = item.id_producto }) |
+                    @Html.ActionLink("Eliminar", "EliminarProd", new { id = item.id_producto })
+                </td>
+            </tr>
+        }
+
+    </table>
 }

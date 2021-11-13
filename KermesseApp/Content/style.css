@@ -30592,4 +30592,15 @@ div.tagsinput span.tag a {
   }
 }
 
+.table{
+    border-collapse:collapse !important;
+    table-layout:fixed !important;
+    width:50px !important;
+}
+
+.table td {
+    word-wrap:break-word !important;
+    width:50px !important;
+}
+
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
