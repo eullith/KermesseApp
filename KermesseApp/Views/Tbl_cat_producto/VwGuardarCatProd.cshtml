@@ -6,8 +6,7 @@
 
 @using (Html.BeginForm("GuardarCatProd", "Tbl_cat_producto", FormMethod.Post))
 {
-    <div class="container" style="padding-top: 1rem;">
-        <h3>Control de Categorías de Productos</h3>
+        <h3 style="padding-bottom: 1rem;">Control de Categorías de Productos</h3>
         <hr>
         <div class="form-group">
             <label>Nombre de la Categoría</label>
@@ -23,6 +22,5 @@
             <button type="submit" class="btn btn-success">Guardar</button>
             <button type="reset" class="btn btn-danger">Cancelar</button>
         </div>
-    </div>
 }
 @Html.ActionLink("Regresar", "tbl_catProducto")

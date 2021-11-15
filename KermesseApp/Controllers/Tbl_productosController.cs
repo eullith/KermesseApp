@@ -17,9 +17,17 @@ namespace KermesseApp.Controllers
             return View(db.tbl_productos.ToList());
         }
 
+
         public ActionResult VwGuardarProd() //Invokes List View
         {
+            //var id_comunidad = db.tbl_comunidad;
+            //ViewBag.tbl_comunidad = new SelectList(id_comunidad, "nombre");
+
             ViewBag.id_comunidad = new SelectList(db.tbl_comunidad, "id_comunidad", "nombre");
+
+            //var id_cat_producto = db.tbl_cat_producto;
+            //ViewBag.tbl_cat_producto = new SelectList(id_cat_producto, "nombre");
+
             ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto, "id_cat_producto", "nombre");
             return View(); //Returns New Prod Cat View
         }
@@ -115,6 +123,11 @@ namespace KermesseApp.Controllers
                 var listaFiltrada = db.tbl_productos.Where(x => x.nombre.Contains(cadena) || x.desc_presentacion.Contains(cadena));
                 return View("tbl_Productos", listaFiltrada);
             }
+        }
+
+        public ActionResult VerRptProd(String tipo)
+        {
+            
         }
     }
 }
