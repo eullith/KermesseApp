@@ -10649,6 +10649,7 @@ select.tt-hint:focus::-ms-value {
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
+  width: 100% !important;
 }
 
 select.form-control[size], select.asColorPicker-input[size], .dataTables_wrapper select[size],
@@ -10668,7 +10669,7 @@ textarea.tt-hint {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .form-text {
@@ -19024,9 +19025,11 @@ a.text-dark:hover, a.text-dark:focus {
     border: 1px solid #adb5bd;
     page-break-inside: avoid;
   }
-  thead {
-    display: table-header-group;
-  }
+    thead {
+        display: table-header-group;
+        color: white;
+        background-color: #4b49ac;
+    }
   tr,
   img {
     page-break-inside: avoid;

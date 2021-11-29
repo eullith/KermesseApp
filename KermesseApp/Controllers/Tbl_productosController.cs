@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,69 +10,78 @@ namespace KermesseApp.Controllers
 {
     public class Tbl_productosController : Controller
     {
-        private KERMESSEEntities db = new KERMESSEEntities();
+        KERMESSEEntities db = new KERMESSEEntities();
 
-        // GET: Tbl_productos
+        //GET: Tbl_productos
         public ActionResult tbl_productos()
         {
-            return View(db.tbl_productos.ToList());
+            return View(db.tbl_productos.Where(model => model.estado != 3));
         }
 
 
         public ActionResult VwGuardarProd() //Invokes List View
         {
-            //var id_comunidad = db.tbl_comunidad;
-            //ViewBag.tbl_comunidad = new SelectList(id_comunidad, "nombre");
-
-            ViewBag.id_comunidad = new SelectList(db.tbl_comunidad, "id_comunidad", "nombre");
-
-            //var id_cat_producto = db.tbl_cat_producto;
-            //ViewBag.tbl_cat_producto = new SelectList(id_cat_producto, "nombre");
-
-            ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto, "id_cat_producto", "nombre");
+            ViewBag.id_comunidad = new SelectList(db.tbl_comunidad.Where(model => model.estado != 3), "id_comunidad", "nombre");
+            ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto.Where(model => model.estado != 3), "id_cat_producto", "nombre");
             return View(); //Returns New Prod Cat View
         }
 
         [HttpPost]
-        public ActionResult GuardarProd(tbl_productos tp) //Method that saves new item
+        public ActionResult GuardarProducto(tbl_productos tp) //Method that saves new item
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    tbl_productos tProd = new tbl_productos();
-                    tProd.id_comunidad = tp.id_comunidad;
-                    tProd.id_cat_producto = tp.id_cat_producto;
-                    tProd.nombre = tp.nombre;
-                    tProd.desc_presentacion = tp.desc_presentacion;
-                    tProd.cantidad = tp.cantidad;
-                    tProd.precio_venta = tp.precio_venta;
-                    tProd.estado = 1;
-                    db.tbl_productos.Add(tProd); //Add new item
-                    db.SaveChanges(); //Saves to model registry 
-                }
 
+            if (ModelState.IsValid)
+            {
+                tbl_productos tProd = new tbl_productos();
+                tProd.id_comunidad = tp.id_comunidad;
+                tProd.id_cat_producto = tp.id_cat_producto;
+                tProd.nombre = tp.nombre;
+                tProd.desc_presentacion = tp.desc_presentacion;
+                tProd.cantidad = tp.cantidad;
+                tProd.precio_venta = tp.precio_venta;
+                tProd.estado = 1;
+
+
+                db.tbl_productos.Add(tProd); //Add new item
+                db.SaveChanges(); //Saves to model registry 
                 ModelState.Clear();
                 return RedirectToAction("tbl_Productos");
             }
-            catch
-            {
-                return RedirectToAction("tbl_Productos");
-            }
+
+            ViewBag.id_comunidad = new SelectList(db.tbl_comunidad.Where(model => model.estado != 3), "id_comunidad", "nombre");
+            ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto.Where(model => model.estado != 3), "id_cat_producto", "nombre");
+            return View("tbl_Productos");
+
         }
 
         public ActionResult EliminarProd(int id)
         {
             tbl_productos tp = new tbl_productos();
             tp = db.tbl_productos.Find(id);
-            db.tbl_productos.Remove(tp);
+            this.LogicalDeleteProducto(tp);
 
-            db.SaveChanges();
-            var list = db.tbl_productos.ToList();
-
-            return View("tbl_Productos", list);
+            return View("tbl_Productos");
         }
 
+        [HttpPost]
+        public ActionResult LogicalDeleteProducto(tbl_productos tp)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    tp.estado = 3;
+                    db.Entry(tp).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("ListProductos");
+            }
+            catch (Exception)
+            {
+                return View();
+                throw;
+            }
+        }
         public ActionResult VerProd(int id)
         {
             var Prod = db.tbl_productos.Where(x => x.id_producto == id).First();
@@ -87,25 +97,31 @@ namespace KermesseApp.Controllers
             }
             else
             {
+                ViewBag.id_comunidad = new SelectList(db.tbl_comunidad, "id_comunidad", "nombre");
+                ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto, "id_cat_producto", "nombre");
                 return View(tp);
             }
         }
 
         [HttpPost]
-        public ActionResult ActualizarProd(tbl_productos tp)
+        public ActionResult ActualizarProducto(tbl_productos tp)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(tp).State = System.Data.Entity.EntityState.Modified;
+                    tp.estado = 2;
+                    db.Entry(tp).State = EntityState.Modified;
                     db.SaveChanges();
                 }
+                ViewBag.id_comunidad = new SelectList(db.tbl_comunidad, "id_comunidad", "nombre");
+                ViewBag.id_cat_producto = new SelectList(db.tbl_cat_producto, "id_cat_producto", "nombre");
                 return RedirectToAction("tbl_Productos");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return View("tbl_Productos");
+                throw;
             }
         }
 
@@ -125,9 +141,5 @@ namespace KermesseApp.Controllers
             }
         }
 
-        public ActionResult VerRptProd(String tipo)
-        {
-            
-        }
     }
 }

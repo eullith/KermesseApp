@@ -1,0 +1,66 @@
+﻿@model KermesseApp.Models.tbl_listaprecio_det
+
+@{
+    ViewBag.Title = "EditarListaPrecioDet";
+}
+
+@using (Html.BeginForm("ActualizarListaPrecioDet", "Tbl_listaprecio", FormMethod.Post))
+{
+    <style>
+        .mydropdownlist {
+            color: #3c3d3d;
+            font-size: 14px;
+            padding: 7px 12px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            background-color: #FFFFFF;
+            width: 100%;
+            height: 2.875rem;
+            font-weight: 400;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_listaprecio_det)
+
+    
+    int id = Model.id_listaprecio;
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card-body">
+            <div class="card-title">
+                <h3 style="padding-top: 1rem;">Añadir nueva Lista de Precio</h3>
+            </div>
+            <div class="card-description" style="padding-bottom: 1rem;">
+                Llene el siguiente formulario para añadir una nueva lista de precio.
+            </div>
+            <div class="form-group">
+                <label>Producto</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("id_producto", null, htmlAttributes: new { @class = "mydropdownlist" })
+                    @Html.ValidationMessageFor(model => model.id_producto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Precio de Venta</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.precio_venta, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.precio_venta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-rounded btn-success">Guardar Cambios</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("tbl_ListaPrecio", new { id })"> Regresar </a>
+            </div>
+        </div>
+    </div>
+
+}

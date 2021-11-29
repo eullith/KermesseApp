@@ -8,11 +8,11 @@
 {
     <h2 style="padding-bottom:2rem;">Categoría del Producto</h2>
 
-    <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
-        <div class="col-md-auto" style="padding-right:12rem;">
+    <div class="row justify-content-end" style="padding-bottom: 1rem;">
+        <div class="col-md-auto" style="padding-right:8rem;">
             <p>
                 <a href="@Url.Action("VwGuardarCatProd")"
-                   class="btn btn-primary">
+                   class="btn btn-rounded btn-primary">
                     <ion-icon name="add-outline"></ion-icon>
                     <span>
                         <strong>Añadir Nuevo</strong>
@@ -20,20 +20,25 @@
                 </a>
             </p>
         </div>
-        <div class="col">
+        <div class="col-sm-6" style="padding-right: 1.5rem;">
             <div class="input-group">
                 @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" })
                 <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">
-                        <i data-feather="search"></i>Buscar
+                    <button type="submit" class="btn btn-rounded btn-success">
+                        <ion-icon name="search" style="pointer-events:none;"></ion-icon> Buscar
                     </button>
                 </div>
             </div>
         </div>
+        <div class="col px-0">
+            @Html.ActionLink("PDF", "VerRptCatProd", new { tipo = "PDF", cadena = Request.Form["cadena"] }, new { @class = "btn btn-rounded btn-inverse-info" })
+            @Html.ActionLink("Word", "VerRptCatProd", new { tipo = "Word" }, new { @class = "btn btn-rounded btn-inverse-info" })
+            @Html.ActionLink("Excel", "VerRptCatProd", new { tipo = "Excel" }, new { @class = "btn btn-rounded btn-inverse-info" })
+        </div>
     </div>
 
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-responsive-xl">
+        <thead style="background-color: #e6eaf1;">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.nombre)
@@ -44,7 +49,7 @@
                 @*<th>
                           @Html.DisplayNameFor(model => model.estado)
                     </th>*@
-                <th>
+                <th class="text-center">
                     @Html.Label("Acciones")
                 </th>
             </tr>
@@ -53,19 +58,19 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td class="text-wrap" style="width: 20rem;">
+                <td>
                     @Html.DisplayFor(modelItem => item.nombre)
                 </td>
-                <td class="text-wrap" style="width: 40rem;">
+                <td>
                     @Html.DisplayFor(modelItem => item.descripcion)
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.estado)
                     </td>*@
-                <td>
-                    <a href="@Url.Action("EditarCatProd", new { id = item.id_cat_producto })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
-                    <a href="@Url.Action("VerCatProd", new { id = item.id_cat_producto })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
-                    <a href="@Url.Action("EliminarCatProd", new { id = item.id_cat_producto })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                <td style="text-align:center">
+                    <a class="btn btn-rounded btn-sm btn-warning" href="@Url.Action("EditarCatProd", new { id = item.id_cat_producto })"><ion-icon name="create-outline" style="pointer-events:none;"></ion-icon> Editar </a>
+                    <a class="btn btn-rounded btn-sm btn-success" href="@Url.Action("VerCatProd", new { id = item.id_cat_producto })"><ion-icon name="document-text-outline" pointer-events: none;"></ion-icon> Detalle</a>
+                    <a class="btn btn-rounded btn-sm btn-danger" href="@Url.Action("EliminarCatProd", new { id = item.id_cat_producto })"><ion-icon name="trash-outline" style="pointer-events: none;"></ion-icon> Eliminar </a>
                 </td>
             </tr>
         }

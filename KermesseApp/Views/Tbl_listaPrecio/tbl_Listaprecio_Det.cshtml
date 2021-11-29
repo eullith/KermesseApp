@@ -1,0 +1,100 @@
+﻿@model IEnumerable<KermesseApp.Models.tbl_listaprecio_det>
+
+
+<p>
+    @{
+        var id = Request.Params["id"];
+        var id_prueba = Request.QueryString["id"];
+        int n = 0;
+        int idlista = 0;
+        Console.Write(id);
+        Console.Write(id_prueba);
+    }
+</p>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card-body">
+        <div class="card-title" style="padding-bottom:2rem;">
+            <h3 style="padding-top: 1rem;">Productos en la Lista de Precio</h3>
+        </div>
+
+        <table class="table table-hover table-responsive-xl">
+            <thead style="background-color: #e6eaf1;">
+                <tr>
+                    <th>
+                        @Html.Label("Nombre del Producto")
+                    </th>
+
+                    <th>
+                        @Html.Label("Precio de Venta")
+                    </th>
+                    <th style="text-align:center">
+                        @Html.Label("Acciones")
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                if (n == 0)
+                {
+
+                    <div class="row justify-content-end" style="padding-bottom: 1rem;">
+                        <div class="col-md-auto" style="padding-right:8rem;">
+                            <p>
+                                <a href="@Url.Action("VwGuardarListaPrecio")"
+                                   class="btn btn-rounded btn-primary">
+                                    <ion-icon name="add-outline"></ion-icon>
+                                    <span>
+                                        <strong>Añadir Nuevo</strong>
+                                    </span>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-sm-6" style="padding-right: 1.5rem;">
+                            <div class="input-group">
+                                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" })
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-rounded btn-success">
+                                        <ion-icon name="search" style="pointer-events:none;"></ion-icon> Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col px-0">
+                            <button type="button" class="btn btn-rounded btn-inverse-info">
+                                Imprimir
+                            </button>
+                            <button type="button" class="btn btn-rounded btn-inverse-info">
+                                Excel
+                            </button>
+                            <button type="button" class="btn btn-rounded btn-inverse-info">
+                                PDF
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                if (item.tbl_productos.estado != 3)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbl_productos.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.precio_venta)
+                        </td>
+                        <td style="text-align:center">
+                            <a class="btn btn-rounded btn-sm btn-warning" href="@Url.Action("EditarListaPrecioDet", new { id = item.id_listaprecio_det })"><ion-icon name="create-outline" style="pointer-events:none;"></ion-icon> Editar </a>
+                            <a class="btn btn-rounded btn-sm btn-danger" href="@Url.Action("EliminarListaPrecioDet", new { id = item.id_listaprecio_det })"><ion-icon name="trash-outline" style="pointer-events: none;"></ion-icon> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+        <div class="form-group" style="padding-top:3rem;">
+            <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("tbl_ListaPrecio")"> Regresar </a>
+        </div>
+    </div>
+</div>

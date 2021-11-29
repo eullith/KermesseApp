@@ -1,0 +1,92 @@
+﻿@model IEnumerable<KermesseApp.Models.tbl_listaprecio>
+
+@{
+    ViewBag.Title = "tbl_Listaprecio";
+}
+
+@using (Html.BeginForm("FiltrarListaPrecio", "Tbl_ListaPrecio", FormMethod.Post))
+{
+    <h2 style="padding-bottom:2rem;">Lista Precio</h2>
+
+    <div class="row justify-content-end" style="padding-bottom: 1rem;">
+        <div class="col-md-auto" style="padding-right:8rem;">
+            <p>
+                <a href="@Url.Action("VwGuardarListaPrecio")"
+                   class="btn btn-rounded btn-primary">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <span>
+                        <strong>Añadir Nuevo</strong>
+                    </span>
+                </a>
+            </p>
+        </div>
+        <div class="col-sm-6" style="padding-right: 1.5rem;">
+            <div class="input-group">
+                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" })
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-rounded btn-success">
+                        <ion-icon name="search" style="pointer-events:none;"></ion-icon> Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col px-0">
+            <button type="button" class="btn btn-rounded btn-inverse-info">
+                Imprimir
+            </button>
+            <button type="button" class="btn btn-rounded btn-inverse-info">
+                Excel
+            </button>
+            <button type="button" class="btn btn-rounded btn-inverse-info">
+                PDF
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.Label("Nombre")
+                </th>
+                <th>
+                    @Html.Label("Descripción")
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>*@
+                <th>
+                    @Html.Label("Kermesse")
+                </th>
+                <th style="text-align:center">
+                    @Html.Label("Acciones")
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_kermesse.nombre)
+                </td>
+                <td style="text-align:center">
+                    <a class="btn btn-rounded btn-sm btn-warning" href="@Url.Action("EditarListaPrecio", new { id = item.id_listaprecio })"><ion-icon name="create-outline" style="pointer-events:none;"></ion-icon> Editar </a>
+                    <a class="btn btn-rounded btn-sm btn-success" href="@Url.Action("tbl_Listaprecio_Det", new { id = item.id_listaprecio })"><ion-icon name="document-text-outline" pointer-events: none;"></ion-icon> Detalle</a>
+                    <a class="btn btn-rounded btn-sm btn-danger" href="@Url.Action("EliminarListaPrecio", new { id = item.id_listaprecio })"><ion-icon name="trash-outline" style="pointer-events: none;"></ion-icon> Eliminar </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}

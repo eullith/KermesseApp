@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com//ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -9,25 +13,18 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="https://localhost:44349/"><img src="images/logo.svg" class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo mr-5" href="https://localhost:44349/Home/Index">Kermesse</a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <ul class="navbar-nav mr-lg-2">
                     <li class="nav-item nav-search d-none d-lg-block">
-                        <div class="input-group">
-                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                                <span class="input-group-text" id="search">
-                                    <i data-feather="search"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-                        </div>
+
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="images/faces/face28.jpg" alt="profile" />
+                            <ion-icon name="person-circle-outline" size="large" class="my-auto"></ion-icon>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
@@ -201,16 +198,16 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://localhost:44349/">
+                        <a class="nav-link" href="https://localhost:44349/Home/Index">
                             <i data-feather="grid"></i>
                             <span>
                                 Panel Admin
                             </span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                            <i data-feather="shopping-bag"></i>
                             <span class="menu-title">Productos</span>
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </a>
@@ -221,16 +218,31 @@
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                            <i data-feather="dollar-sign"></i>
                             <span class="menu-title">Lista Precio</span>
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Detalle</a></li>
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Lista Precio</a></li>
+                                <li class="nav-item"><a class="nav-link" href="https://localhost:44349/Tbl_listaPrecio/tbl_ListaPrecio">Lista Precio</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="form-elements">
+                            <span class="menu-title">Seguridad</span>
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </a>
+                        <div class="collapse" id="icons">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="">Rol</a></li>
+                                <li class="nav-item"><a class="nav-link" href="">Usuario</a></li>
+                                <li class="nav-item"><a class="nav-link" href="">Opciones</a></li>
+                                <li class="nav-item"><a class="nav-link" href="">Rol Usuario</a></li>
+                                <li class="nav-item"><a class="nav-link" href="">Rol Opciones</a></li>
                             </ul>
                         </div>
                     </li>
@@ -264,6 +276,15 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tableId').DataTable();
+        });
+    </script>
+
     @RenderSection("scripts", required: false)
 
 </body>

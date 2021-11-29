@@ -49,5 +49,7 @@ namespace KermesseApp.Models
         public virtual DbSet<tbl_tasacambio> tbl_tasacambio { get; set; }
         public virtual DbSet<tbl_tasacambio_det> tbl_tasacambio_det { get; set; }
         public virtual DbSet<tbl_usuario> tbl_usuario { get; set; }
+
+        //public System.Data.Entity.DbSet<KermesseApp.Views.ViewModels.VmListPrecio_Det> VmListPrecio_Det { get; set; }
     }
 }

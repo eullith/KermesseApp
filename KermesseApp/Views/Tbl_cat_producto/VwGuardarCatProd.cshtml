@@ -6,21 +6,48 @@
 
 @using (Html.BeginForm("GuardarCatProd", "Tbl_cat_producto", FormMethod.Post))
 {
-        <h3 style="padding-bottom: 1rem;">Control de Categorías de Productos</h3>
-        <hr>
-        <div class="form-group">
-            <label>Nombre de la Categoría</label>
-            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://as2.ftcdn.net/v2/jpg/03/33/89/55/1000_F_333895571_p5TWdl4GOwLBn5NMTv8XHz9bu971vTpa.jpg" class="card-img-top" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body ">
+                        <div class="card-title">
+                            <h3 style="padding-top: 1rem;">Añadir nueva categoría de productos</h3>
+                        </div>
+                        <div class="card-description" style="padding-bottom: 1rem;">
+                            Llene el siguiente formulario para añadir una nueva categoría de producto.
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de la Categoría</label>
+                            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción de la Categoría</label>
+                            @Html.TextAreaFor(x => x.descripcion, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="row" style="padding-top:2rem;">
+                            <div class="col">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block btn-rounded btn-success">Guardar</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <button type="reset" class="btn btn-block btn-rounded btn-danger">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("tbl_catProducto")"> Regresar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Descripción de la Categoría</label>
-            @Html.TextAreaFor(x => x.descripcion, new { @class = "form-control"})
-            @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
-        </div>
+    </div>
 }
-@Html.ActionLink("Regresar", "tbl_catProducto")

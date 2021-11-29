@@ -4,71 +4,54 @@
     ViewBag.Title = "VerProd";
 }
 
-<h2>Ver Productos</h2>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://as1.ftcdn.net/v2/jpg/00/41/40/38/1000_F_41403871_XgEFR2CYL5JdEPK47HcgaOTRduKImzV9.jpg" class="card-img-top" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body ">
+                    <div class="card-title">
+                        <h3 style="padding-top: 1rem;">Detalle del producto</h3>
+                    </div>
 
-<div>
-    <h4>Detalle de Productos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <label>Nombre</label>
-        </dt>
+                    <label class="card-description">Nombre</label>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.nombre)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                    <label class="card-description">Descripción</label>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.desc_presentacion)
+                    </dd>
 
-        <dt>
-            <label>Descripción</label>
-        </dt>
+                    <label class="card-description">Cantidad</label>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.cantidad)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.desc_presentacion)
-        </dd>
+                    <label class="card-description">Precio</label>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.precio_venta)
+                    </dd>
 
-        <dt>
-            <label>Cantidad</label>
-        </dt>
+                    <label class="card-description">Categoría</label>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.tbl_cat_producto.nombre)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
-
-        <dt>
-            <label>Precio</label>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.precio_venta)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estado)
-        </dd>*@
-
-        <dt>
-            <label>Categoría</label>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbl_cat_producto.nombre)
-        </dd>
-
-        <dt>
-            <label>Comunidad</label>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbl_comunidad.nombre)
-        </dd>
-
-    </dl>
+                    <dt>
+                        <label class="card-description">Comunidad</label>
+                    </dt>
+                    <dd style="font-size:20px;">
+                        @Html.DisplayFor(model => model.tbl_comunidad.nombre)
+                    </dd>
+                    <div class="form-group" style="padding-top:2rem;">
+                        <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("Tbl_Productos")"> Regresar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @*@Html.ActionLink("Editar", "EditarProd", new { id = Model.id_producto }) |*@
-    @Html.ActionLink("Regresar", "Tbl_productos")
-</p>

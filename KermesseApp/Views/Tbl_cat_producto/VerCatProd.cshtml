@@ -4,39 +4,37 @@
     ViewBag.Title = "VerCatProd";
 }
 
-<h2>Ver Categoría de los Productos</h2>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://as2.ftcdn.net/v2/jpg/03/33/89/55/1000_F_333895571_p5TWdl4GOwLBn5NMTv8XHz9bu971vTpa.jpg" class="card-img-top" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body ">
+                    <div class="card-title">
+                        <h3 style="padding-top: 1rem;">Detalle de la categoría de producto</h3>
+                    </div>
+                    <dt class="card-description">
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </dt>
 
-<div>
-    <h4>Detalle de Categoría de Productos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                    <dd style="font-size:20px; padding-bottom:1rem;">
+                        @Html.DisplayFor(model => model.nombre)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                    <dt class="card-description">
+                        @Html.DisplayNameFor(model => model.descripcion)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estado)
-        </dd>*@
-
-    </dl>
+                    <dd style="font-size:20px; padding-bottom:1.5rem;">
+                        @Html.DisplayFor(model => model.descripcion)
+                    </dd> 
+                    <div class="form-group" style="padding-top:2rem;">
+                        <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("tbl_catProducto")"> Regresar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.id_cat_producto }) |*@
-    @Html.ActionLink("Regresar", "tbl_catProducto")
-</p>

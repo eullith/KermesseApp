@@ -30,9 +30,11 @@ namespace KermesseApp
                 "~/Scripts/form-validation.js",
                 "~/Scripts/form-repeater.js",
                 "~/Scripts/dashboard.js",
-                "~/Scripts/bootstrap-table.js",
                 "~/Scripts/off-canvas.js",
+                "~/Scripts/bootstrap-table.js",
+                "~/Scripts/dataTables.bootstrap4.js",
                 "~/Scripts/jquery.dataTables.js",
+                "~/Scripts/dataTables.select.min.js",
                 "~/Scripts/template.js",
                 "~/Scripts/vendor.bundle.base.js"));
 
