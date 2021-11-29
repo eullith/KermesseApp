@@ -360,6 +360,7 @@
     <Content Include="Content\images\file-icons\64\006-record.png" />
     <Content Include="Content\images\file-icons\64\007-folder.png" />
     <Content Include="Content\images\file-icons\64\008-archive.png" />
+    <Content Include="Content\images\Kermesse_logo.png" />
     <Content Include="Content\images\lightbox\play-button.png" />
     <Content Include="Content\images\lightbox\thumb-v-v-1.jpg" />
     <Content Include="Content\images\lightbox\thumb-v-v-2.jpg" />
@@ -703,6 +704,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reportes\rptCatProducto.rdlc" />
+    <EmbeddedResource Include="Reportes\rptProducto.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
