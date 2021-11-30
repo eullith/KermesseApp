@@ -35,68 +35,68 @@ namespace KermesseApp.Controllers
         }
 
         //Save data into Lista Precio table Method
-        [HttpPost]
-        public ActionResult GuardarListaPrecio(tbl_listaprecio lp)
-        {
-            try
-            {
-                if(ModelState.IsValid)
-                {
-                    tbl_listaprecio lPrec = new tbl_listaprecio();
-                    lPrec.id_kermesse = lp.id_kermesse;
-                    lPrec.nombre = lp.nombre;
-                    lPrec.descripcion = lp.descripcion;
-                    lPrec.estado = lp.estado;
-                    db.tbl_listaprecio.Add(lPrec);
-                    db.SaveChanges();
-                    foreach(var lpd in lp.listaprecio_det)
-                    {
-                        tbl_listaprecio_det lpDet = new tbl_listaprecio_det();
-                        lpDet.id_producto = lpd.id_producto;
-                        lpDet.precio_venta = lpd.precio_venta;
-                        lpDet.id_listaprecio = lpd.id_listaprecio;
-                        db.tbl_listaprecio_det.Add(lpDet);
-                    }
-                    db.SaveChanges();
-                }
-                ModelState.Clear();
-                return RedirectToAction("tbl_Listaprecio");
-            }
-            catch(Exception)
-            {
-                return View("VwGuardarListaPrecio");
-            }
-        }
+        //[HttpPost]
+        //public ActionResult GuardarListaPrecio(tbl_listaprecio lp)
+        //{
+        //    try
+        //    {
+        //        if(ModelState.IsValid)
+        //        {
+        //            tbl_listaprecio lPrec = new tbl_listaprecio();
+        //            lPrec.id_kermesse = lp.id_kermesse;
+        //            lPrec.nombre = lp.nombre;
+        //            lPrec.descripcion = lp.descripcion;
+        //            lPrec.estado = lp.estado;
+        //            db.tbl_listaprecio.Add(lPrec);
+        //            db.SaveChanges();
+        //            foreach(var lpd in lp.listaprecio_det)
+        //            {
+        //                tbl_listaprecio_det lpDet = new tbl_listaprecio_det();
+        //                lpDet.id_producto = lpd.id_producto;
+        //                lpDet.precio_venta = lpd.precio_venta;
+        //                lpDet.id_listaprecio = lpd.id_listaprecio;
+        //                db.tbl_listaprecio_det.Add(lpDet);
+        //            }
+        //            db.SaveChanges();
+        //        }
+        //        ModelState.Clear();
+        //        return RedirectToAction("tbl_Listaprecio");
+        //    }
+        //    catch(Exception)
+        //    {
+        //        return View("VwGuardarListaPrecio");
+        //    }
+        //}
 
         //Save data into Lista Precio table Method
-        [HttpPost]
-        public ActionResult GuardarListaPrecDetalle(tbl_listaprecio lp)
-        {
-            int idList = lp.id_listaprecio;
+        //[HttpPost]
+        //public ActionResult GuardarListaPrecDetalle(tbl_listaprecio lp)
+        //{
+        //    int idList = lp.id_listaprecio;
 
-            try
-            {
-                tbl_listaprecio lPrec = new tbl_listaprecio();
-                lPrec.id_listaprecio = lp.id_listaprecio;
-                foreach (var lpd in lp.listaprecio_det)
-                {
-                    tbl_listaprecio_det lpDet = new tbl_listaprecio_det();
-                    lpDet.id_producto = lpd.id_producto;
-                    lpDet.precio_venta = lpd.precio_venta;
-                    lpDet.id_listaprecio = lpd.id_listaprecio;
-                    db.tbl_listaprecio_det.Add(lpDet);
-                }
-                db.SaveChanges();
+        //    try
+        //    {
+        //        tbl_listaprecio lPrec = new tbl_listaprecio();
+        //        lPrec.id_listaprecio = lp.id_listaprecio;
+        //        foreach (var lpd in lp.listaprecio_det)
+        //        {
+        //            tbl_listaprecio_det lpDet = new tbl_listaprecio_det();
+        //            lpDet.id_producto = lpd.id_producto;
+        //            lpDet.precio_venta = lpd.precio_venta;
+        //            lpDet.id_listaprecio = lpd.id_listaprecio;
+        //            db.tbl_listaprecio_det.Add(lpDet);
+        //        }
+        //        db.SaveChanges();
 
-                ModelState.Clear();
-                return RedirectToAction("tbl_listaprecio_det", "Tbl_listaprecio", new { id = idList });
-            }
-            catch(Exception)
-            {
-                return RedirectToAction("tbl_listaprecio_det", "Tbl_listaprecio", new { id = idList });
-                throw;
-            }
-        }
+        //        ModelState.Clear();
+        //        return RedirectToAction("tbl_listaprecio_det", "Tbl_listaprecio", new { id = idList });
+        //    }
+        //    catch(Exception)
+        //    {
+        //        return RedirectToAction("tbl_listaprecio_det", "Tbl_listaprecio", new { id = idList });
+        //        throw;
+        //    }
+        //}
 
         //Edit Methods
         public ActionResult EditarListaPrecio(int id)

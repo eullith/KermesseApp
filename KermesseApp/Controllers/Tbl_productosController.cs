@@ -143,7 +143,7 @@ namespace KermesseApp.Controllers
             }
         }
 
-        public ActionResult VerRptProd(String tipo, String cadena)
+        public ActionResult VerRptCatProd(String tipo, String cadena)
         {
             LocalReport rpt = new LocalReport();
             string mt, enc, f;
