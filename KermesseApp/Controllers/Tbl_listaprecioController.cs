@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Microsoft.Reporting.WebForms;
+using System.IO;
 
 namespace KermesseApp.Controllers
 {
@@ -241,6 +243,33 @@ namespace KermesseApp.Controllers
                 var listaFiltrada = db.tbl_listaprecio_det.Where(model => model.tbl_productos.nombre.Contains(cadena) && model.id_listaprecio == id);
                 return View("tbl_Listaprecio_Det", listaFiltrada);
             }
+        }
+
+        public ActionResult VerRptCatProd(String tipo, String cadena)
+        {
+            LocalReport rpt = new LocalReport();
+            string mt, enc, f;
+            string[] s;
+            Warning[] w;
+
+            //cadena = formCollection.GetValue("cadena").AttemptedValue;
+
+            string ruta = Path.Combine(Server.MapPath("~/Reportes"), "rptListaPrecio.rdlc");
+            rpt.ReportPath = ruta;
+
+            var listaFiltrada = from a in db.ListaPrecio1() select a; //method to gather all db info
+
+            if (!string.IsNullOrEmpty(cadena))
+            {
+                //List<tbl_productos> listaFiltrada = new List<tbl_productos>();
+                listaFiltrada = listaFiltrada.Where(x => x.nombre.Contains(cadena) || x.descripcion.Contains(cadena));
+            }
+
+            ReportDataSource rd = new ReportDataSource("dsListaPrecio", listaFiltrada);
+            rpt.DataSources.Add(rd);
+            //tipo = "PDF";
+            var b = rpt.Render(tipo, null, out mt, out enc, out f, out s, out w);
+            return new FileContentResult(b, mt);
         }
     }
 }

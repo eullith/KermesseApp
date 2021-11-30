@@ -158,7 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ListaPrecio_Result.cs">
+    <Compile Include="Models\ListaPrecio1_Result.cs">
       <DependentUpon>ModelKermesse.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelKermesse.Context.cs">

@@ -718,6 +718,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="ListaPrecio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListaPrecio1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="KERMESSEModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -1858,6 +1859,7 @@
           </AssociationSet>
           <FunctionImport Name="ListaPrecio" ReturnType="Collection(KERMESSEModel.ListaPrecio_Result)" />
           <FunctionImport Name="Producto" ReturnType="Collection(KERMESSEModel.Producto_Result)" />
+          <FunctionImport Name="ListaPrecio1" ReturnType="Collection(KERMESSEModel.ListaPrecio1_Result)" />
         </EntityContainer>
         <ComplexType Name="ListaPrecio_Result">
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
@@ -1874,6 +1876,13 @@
           <Property Type="String" Name="Presentacion" Nullable="false" MaxLength="200" />
           <Property Type="Int32" Name="cantidad" Nullable="false" />
           <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ListaPrecio1_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="200" />
+          <Property Type="Decimal" Name="precio_venta" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="knombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="pnombre" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2194,6 +2203,17 @@
                 <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListaPrecio1" FunctionName="KERMESSEModel.Store.ListaPrecio1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KERMESSEModel.ListaPrecio1_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+                <ScalarProperty Name="knombre" ColumnName="knombre" />
+                <ScalarProperty Name="pnombre" ColumnName="pnombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

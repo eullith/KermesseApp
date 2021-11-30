@@ -52,14 +52,15 @@ namespace KermesseApp.Models
         public virtual DbSet<tbl_tasacambio_det> tbl_tasacambio_det { get; set; }
         public virtual DbSet<tbl_usuario> tbl_usuario { get; set; }
     
-        public virtual ObjectResult<ListaPrecio_Result> ListaPrecio()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaPrecio_Result>("ListaPrecio");
-        }
-    
+         
         public virtual ObjectResult<Producto_Result> Producto()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Producto_Result>("Producto");
+        }
+    
+        public virtual ObjectResult<ListaPrecio1_Result> ListaPrecio1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaPrecio1_Result>("ListaPrecio1");
         }
     }
 }

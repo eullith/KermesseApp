@@ -35,7 +35,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
-                          <Top>0.11667in</Top>
+                          <Top>0in</Top>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <Style>
@@ -66,7 +66,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
-                          <Top>0.43611in</Top>
+                          <Top>0.30556in</Top>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>1</ZIndex>
@@ -98,7 +98,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
-                          <Top>0.75556in</Top>
+                          <Top>0.62501in</Top>
                           <Height>0.25in</Height>
                           <Width>1in</Width>
                           <ZIndex>2</ZIndex>
@@ -129,7 +129,6 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>nombre</rd:DefaultName>
-                          <Top>0.11667in</Top>
                           <Left>1.26333in</Left>
                           <Height>0.25in</Height>
                           <Width>7.88333in</Width>
@@ -145,14 +144,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="nombre1">
+                        <Textbox Name="knombre">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!nombre1.Value)</Value>
+                                  <Value>=First(Fields!knombre.Value)</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                   </Style>
@@ -161,8 +160,8 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>nombre1</rd:DefaultName>
-                          <Top>0.43611in</Top>
+                          <rd:DefaultName>knombre</rd:DefaultName>
+                          <Top>0.31944in</Top>
                           <Left>1.26333in</Left>
                           <Height>0.25in</Height>
                           <Width>7.88333in</Width>
@@ -195,7 +194,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>descripcion</rd:DefaultName>
-                          <Top>0.75556in</Top>
+                          <Top>0.63889in</Top>
                           <Left>1.26333in</Left>
                           <Height>0.25in</Height>
                           <Width>7.88333in</Width>
@@ -410,21 +409,21 @@
                                   </TablixCell>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="nombre2">
+                                      <Textbox Name="pnombre">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!nombre2.Value</Value>
+                                                <Value>=Fields!pnombre.Value</Value>
                                                 <Style />
                                               </TextRun>
                                             </TextRuns>
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>nombre2</rd:DefaultName>
+                                        <rd:DefaultName>pnombre</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -436,7 +435,6 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>
@@ -531,7 +529,7 @@
             <TablixMember>
               <Group Name="Details1">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!Kermesse.Value</GroupExpression>
+                  <GroupExpression>=Fields!nombre.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
             </TablixMember>
@@ -877,18 +875,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsListaPrecio">
+    <DataSource Name="dsNew">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d033fc55-7208-44b2-915f-05cbd6fdafa4</rd:DataSourceID>
+      <rd:DataSourceID>98ca2d87-0c3a-4c97-aa20-4d7213bdb82f</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="dsListaPrecio">
       <Query>
-        <DataSourceName>dsListaPrecio</DataSourceName>
+        <DataSourceName>dsNew</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -904,22 +902,22 @@
           <DataField>precio_venta</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="nombre1">
-          <DataField>nombre1</DataField>
+        <Field Name="knombre">
+          <DataField>knombre</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="nombre2">
-          <DataField>nombre2</DataField>
+        <Field Name="pnombre">
+          <DataField>pnombre</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsListaPrecio</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\pc\source\repos\KermesseApp\KermesseApp\Reportes\dsListaPrecio.xsd</rd:SchemaPath>
-        <rd:TableName>ListaPrecio</rd:TableName>
+        <rd:DataSetName>dsNew</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\pc\source\repos\KermesseApp\KermesseApp\Reportes\dsNew.xsd</rd:SchemaPath>
+        <rd:TableName>ListaPrecio1</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ListaPrecioTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>ListaPrecio1TableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
