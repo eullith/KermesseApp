@@ -226,7 +226,7 @@ namespace KermesseApp.Controllers
             }
             else
             {
-                var listaFiltrada = db.tbl_listaprecio.Where(x => x.nombre.Contains(cadena) || x.descripcion.Contains(cadena));
+                var listaFiltrada = db.tbl_listaprecio.Where(x => (x.nombre.Contains(cadena) || x.descripcion.Contains(cadena)) && x.estado !=3);
                 return View("tbl_Listaprecio", listaFiltrada);  //Retorna la vista filtrada de lista precio
             }
         }
