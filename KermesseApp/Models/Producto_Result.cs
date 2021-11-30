@@ -10,16 +10,15 @@
 namespace KermesseApp.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_listaprecio_det
+    public partial class Producto_Result
     {
-        public int id_listaprecio_det { get; set; }
-        public int id_listaprecio { get; set; }
-        public int id_producto { get; set; }
-        public decimal precio_venta { get; set; }
-    
-        public virtual tbl_listaprecio tbl_listaprecio { get; set; }
-        public virtual tbl_productos tbl_productos { get; set; }
+        public int Id { get; set; }
+        public string Comunidad { get; set; }
+        public string Categoria { get; set; }
+        public string Producto { get; set; }
+        public string Presentacion { get; set; }
+        public int cantidad { get; set; }
+        public decimal Precio { get; set; }
     }
 }

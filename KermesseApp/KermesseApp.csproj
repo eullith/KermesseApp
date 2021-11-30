@@ -158,6 +158,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListaPrecio_Result.cs">
+      <DependentUpon>ModelKermesse.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelKermesse.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,6 +175,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelKermesse.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Producto_Result.cs">
+      <DependentUpon>ModelKermesse.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModelKermesse.tt</DependentUpon>

@@ -11,8 +11,7 @@ namespace KermesseApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,16 +22,11 @@ namespace KermesseApp.Models
         }
     
         public int id_producto { get; set; }
-        [Required(ErrorMessage = "Seleccione una comunidad")]
         public int id_comunidad { get; set; }
-        [Required(ErrorMessage = "Seleccione una categoría de producto")]
         public int id_cat_producto { get; set; }
-        [Required(ErrorMessage = "Ingrese el nombre del producto")]
         public string nombre { get; set; }
         public string desc_presentacion { get; set; }
-        [Required(ErrorMessage = "Ingrese la cantidad de productos")]
         public int cantidad { get; set; }
-        [Required(ErrorMessage = "Ingrese el precio de venta")]
         public decimal precio_venta { get; set; }
         public int estado { get; set; }
     

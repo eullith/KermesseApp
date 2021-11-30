@@ -143,7 +143,7 @@ namespace KermesseApp.Controllers
             }
         }
 
-        public ActionResult VerRptCatProd(String tipo, String cadena)
+        public ActionResult VerRptProd(String tipo, String cadena)
         {
             LocalReport rpt = new LocalReport();
             string mt, enc, f;
@@ -155,12 +155,12 @@ namespace KermesseApp.Controllers
             string ruta = Path.Combine(Server.MapPath("~/Reportes"), "rptProducto.rdlc");
             rpt.ReportPath = ruta;
 
-            var listaFiltrada = from a in db.tbl_productos select a; //method to gather all db info
+            var listaFiltrada = from a in db.Producto() select a; //method to gather all db info
 
             if (!string.IsNullOrEmpty(cadena))
             {
                 //List<tbl_productos> listaFiltrada = new List<tbl_productos>();
-                listaFiltrada = listaFiltrada.Where(x => x.nombre.Contains(cadena) || x.desc_presentacion.Contains(cadena));
+                listaFiltrada = listaFiltrada.Where(x => x.Producto.Contains(cadena) || x.Presentacion.Contains(cadena));
             }
 
             ReportDataSource rd = new ReportDataSource("dsProducto", listaFiltrada);

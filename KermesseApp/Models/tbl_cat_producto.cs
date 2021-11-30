@@ -11,7 +11,6 @@ namespace KermesseApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tbl_cat_producto
     {
@@ -22,15 +21,8 @@ namespace KermesseApp.Models
         }
     
         public int id_cat_producto { get; set; }
-        [Display(Name = "Nombre de la categoría")]
-        [Required(ErrorMessage = "Escriba el nombre de la categoría")]
-        [StringLength(50, ErrorMessage = "El valor máximo de caracteres permitida es de 50")]
         public string nombre { get; set; }
-        [Display(Name = "Descripción de la categoría")]
-        [Required(ErrorMessage = "Escriba la descripción de la categoría")]
-        [StringLength(100, ErrorMessage = "El valor máximo de caracteres permitida es de 100")]
         public string descripcion { get; set; }
-
         public int estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -31,9 +31,9 @@
             </div>
         </div>
         <div class="col px-0">
-            @Html.ActionLink("PDF", "VerRptCarProd", new { tipo = "PDF", cadena = Request.Form["cadena"] }, new { @class = "btn btn-rounded btn-inverse-info" })
-            @Html.ActionLink("Word", "VerRptCatProd", new { tipo = "Word" }, new { @class = "btn btn-rounded btn-inverse-info" })
-            @Html.ActionLink("Excel", "VerRptCatProd", new { tipo = "Excel" }, new { @class = "btn btn-rounded btn-inverse-info" })
+            @Html.ActionLink("PDF", "VerRptCatProd", new { tipo = "PDF", cadena = Request.Form["cadena"] }, new { @class = "btn btn-rounded btn-inverse-info" })
+            @Html.ActionLink("Word", "VerRptCatProd", new { tipo = "Word", cadena = Request.Form["cadena"] }, new { @class = "btn btn-rounded btn-inverse-info" })
+            @Html.ActionLink("Excel", "VerRptCatProd", new { tipo = "Excel", cadena = Request.Form["cadena"] }, new { @class = "btn btn-rounded btn-inverse-info" })
         </div>
     </div>
 
